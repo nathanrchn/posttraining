@@ -31,9 +31,9 @@ class CustomSFTTrainer(SFTTrainer):
         return metrics
 
 
-class PLWDataCollator(DataCollatorForLanguageModeling):
+class CustomSFTDataCollator(DataCollatorForLanguageModeling):
     def __init__(self, tokenizer, mlm=False, pad_to_multiple_of=None):
-        super(PLWDataCollator, self).__init__(
+        super(CustomSFTDataCollator, self).__init__(
             tokenizer=tokenizer, mlm=mlm, pad_to_multiple_of=pad_to_multiple_of
         )
 
@@ -46,7 +46,7 @@ class PLWDataCollator(DataCollatorForLanguageModeling):
             {"input_ids": ex["input_ids"], "attention_mask": ex["attention_mask"]}
             for ex in features
         ]
-        batch = super(PLWDataCollator, self).__call__(
+        batch = super(CustomSFTDataCollator, self).__call__(
             standard_fields, return_tensors=return_tensors
         )
 

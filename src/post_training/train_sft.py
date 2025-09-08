@@ -24,10 +24,10 @@ from post_training.data_sft.utils_for_dataset import DatasetConfig, get_dataset_
 from post_training.trainers.sft import (
     CustomSFTTrainer,
     LengthNormalizedPLWTrainer,
-    PLWDataCollator,
+    CustomSFTDataCollator,
     PLWTrainer,
 )
-from post_training.utils import utils_for_trl
+from post_training.utils import utils_for_trl, custom_evals
 
 utils.config.register_resolvers()
 acc_state = PartialState(
@@ -147,8 +147,9 @@ def main(config: DictConfig) -> None:
         "train_dataset": ds["train"],
         "eval_dataset": ds["eval"] if training_args.eval_strategy != "no" else None,
         "processing_class": tokenizer,
-        "data_collator": PLWDataCollator(tokenizer=tokenizer, mlm=False),
+        "data_collator": CustomSFTDataCollator(tokenizer=tokenizer, mlm=False),
         "peft_config": peft_config,
+        "compute_metrics": custom_evals.get_compute_metrics_fn(config.eval_metrics, tokenizer),
     }
     if config.trainer == "sft":
         acc_logger.info("Starting sft trainer.")
