@@ -4,10 +4,10 @@ export PROJECT_NAME=posttraining
 export PACKAGE_NAME=post_training
 export STORE=/capstor/store/cscs/swissai/infra01/
 export SHARED_SCRATCH=/iopsstor/scratch/cscs/ismayilz/projects/posttraining/
-export CONTAINER_IMAGE=/capstor/store/cscs/swissai/infra01/swiss-alignment/container-images/swiss-alignment+apertus-vllm-38c6036.sqsh
+export CONTAINER_IMAGE=/capstor/store/cscs/swissai/infra01/container-images/infra01+nathanrchn+post-training+arm64-cuda-root-2e25765.sqsh
 export CONTAINER_ENV_FILE="${PROJECT_ROOT_AT}/installation/docker-arm64-cuda/CSCS-Clariden-setup/shared-submit-scripts/edf.toml"
 
-export HF_HOME=$SCRATCH/huggingface
+export HF_HOME=$SCRATCH/.cache/huggingface
 export WANDB_API_KEY_FILE_AT=$HOME/.wandb-api-key
 export WANDB_ENTITY=apertus
 
