@@ -16,4 +16,5 @@ trl==0.16.0
 # Model Merging
 # swiss-ai fork of mergekit
 git+https://github.com/swiss-ai/mergekit.git
+git+https://github.com/triton-lang/triton.git@c817b9b63d40ead1ed023b7663f5ea14f676f4bc
 liger-kernel==0.6.2

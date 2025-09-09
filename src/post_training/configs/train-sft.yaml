@@ -26,7 +26,7 @@ script_args:
   dataset_test_split: ${dataset_args.eval_split.name}
 
 accelerate_config: "src/post_training/configs/accelerate/ds-zero1.yaml"
-trainer: plw # can only take values: sft, plw, ln-plw, irl
+trainer: sft # can only take values: sft, plw, ln-plw, irl
 plw_args:
   prompt_loss_weight: 0.0
   sequence_level_loss: false

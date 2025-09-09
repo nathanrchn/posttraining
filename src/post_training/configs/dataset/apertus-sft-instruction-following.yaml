@@ -7,8 +7,9 @@ dataset_args:
   train_split: # Only required for DatasetDict objects
     name: train
   eval_split:
-    name: null
+    name: validation
+    ratio: 0.01
 
 training_args:
-  eval_strategy: "no"
-  eval_steps: null
+  eval_strategy: "yes"
+  eval_steps: 100
